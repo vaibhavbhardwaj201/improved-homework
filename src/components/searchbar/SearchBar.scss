@@ -6,9 +6,9 @@
 }
 
 .search-form {
-  @include disFlex(center, space-around);
+  @include disFlex(center, flex-start);
   background-color: #e7e7e7;
-  padding: 0.1rem 0.5rem;
+  padding: 0.1rem 1rem;
   border-radius: 10px;
 
   .textfield {
