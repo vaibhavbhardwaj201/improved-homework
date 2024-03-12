@@ -1,0 +1,29 @@
+@import '../../styles/mixins';
+
+.search-bar {
+  margin: auto;
+  background-color: #fff;
+}
+
+.search-form {
+  @include disFlex(center, space-around);
+}
+
+.textfield {
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background-color: #e7e7e7;
+  padding: 0.5rem;
+  width: 90%;
+}
+
+.search {
+  cursor: pointer;
+  outline: none;
+  background-color: #01757e;
+  color: #fff;
+  padding: 0.4rem;
+  border: none;
+  border-radius: 3px;
+}
