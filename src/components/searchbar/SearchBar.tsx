@@ -22,6 +22,7 @@ const SearchBar = () => {
     return (
         <div className="search-bar">
             <div className='search-form'>
+                <img src='/search-icon.svg' alt='search-icon' className='search-icon' width={25} height={25} />
                 <input
                     className='textfield'
                     type="text"

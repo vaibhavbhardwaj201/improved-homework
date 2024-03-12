@@ -12,29 +12,10 @@ body {
 
 /* Mobile layout */
 @media only screen and (max-width: 600px) {
-  .cards-container {
-    grid-template-columns: repeat(1, 1fr);
-    padding: 1rem;
-    gap: 5px;
-  }
   .show-on-mobile {
     display: block;
   }
   .hidden-on-mobile {
     display: none;
-  }
-}
-
-/* Tablet layout */
-@media only screen and (min-width: 600px) {
-  .cards-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .cards-container {
-    grid-template-columns: repeat(3, 1fr);
-    padding: 2.5rem !important;
   }
 }

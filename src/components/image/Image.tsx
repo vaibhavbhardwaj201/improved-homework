@@ -51,10 +51,6 @@ const Image = ({
         }
     }, [loaded, favourite])
 
-
-
-
-
     const removeFromFavourite = (id: number) => {
         const newFav = favourite.filter((photo) => photo.id !== id)
         setFavourite(newFav)
@@ -71,7 +67,7 @@ const Image = ({
 
     return (
         <>
-            <div className='card pointer'>
+            <div className='card'>
                 <div className="image-overlay">
                     <div className="overlay-text">
                         <div className="title-text">

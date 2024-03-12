@@ -7,15 +7,18 @@
 
 .search-form {
   @include disFlex(center, space-around);
-}
-
-.textfield {
-  outline: none;
-  border: none;
-  border-radius: 5px;
   background-color: #e7e7e7;
-  padding: 0.5rem;
-  width: 90%;
+  padding: 0.1rem 0.5rem;
+  border-radius: 10px;
+
+  .textfield {
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background-color: #e7e7e7;
+    padding: 0.5rem;
+    width: 90%;
+  }
 }
 
 .search {
