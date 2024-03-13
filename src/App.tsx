@@ -1,11 +1,11 @@
 // import { useEffect } from 'react'
 import './App.scss'
-import { ImageCard, Loader, Navbar, Overlay, SearchBar } from './components'
+import { ImageCard, Loader, Navbar, NoImages, Overlay, SearchBar } from './components'
 import { useAppContext } from './contexts/AppContext'
 
 function App() {
 
-  const { loading } = useAppContext()
+  const { loading, photos } = useAppContext()
 
   return (
     <>
@@ -14,12 +14,8 @@ function App() {
       <div className="show-on-mobile">
         <SearchBar />
       </div>
-      {loading &&
-
-        <Loader />
-      }
-      <ImageCard />
-      {/* <Loader /> */}
+      {loading && <Loader />}
+      {photos.length > 0 ? <ImageCard /> : <NoImages />}
     </>
   )
 }

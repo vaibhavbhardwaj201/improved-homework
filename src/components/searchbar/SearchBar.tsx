@@ -3,17 +3,17 @@ import { useAppContext } from '../../contexts/AppContext'
 import './SearchBar.scss'
 
 const SearchBar = () => {
-    const { setSearch, setPhotos } = useAppContext()
+    const { setSearch, setPhotos, photos } = useAppContext()
     const [searchValue, setSearchValue] = useState<string>('')
 
     useEffect(() => {
         const delayDebounceFn = setTimeout(() => {
             setSearch(searchValue)
-            setPhotos([])
+            if (!photos) setPhotos([])
         }, 500)
 
         return () => clearTimeout(delayDebounceFn)
-    }, [searchValue, setSearch, setPhotos])
+    }, [searchValue, setSearch])
 
     const handleSetSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchValue(e.target.value)

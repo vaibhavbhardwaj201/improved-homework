@@ -45,7 +45,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
             setPage(1)
             setPhotos([])
         }
-        if (search && search !== '') {
+        if (search && search !== prevSearchRef.current) {
             setPage(1)
             setPhotos([])
             prevSearchRef.current = search
@@ -58,9 +58,11 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
             if (!imgExists) {
                 setPhotos(prev => [...prev, ...data.photos])
             }
+
         }
     }, [data])
 
+    console.log(photos)
     return (
         <AppContext.Provider
             value={{
