@@ -17,7 +17,7 @@ function App() {
       {photos.length > 0 ?
         <ImageCard />
         :
-        <NoImages />}
+        loading ? null : <NoImages />}
     </>
   )
 }

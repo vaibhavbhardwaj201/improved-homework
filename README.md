@@ -5,14 +5,8 @@ https://image-gallery-git-main-vko.vercel.app/
 
 TODO:
 
-1. Add place holder till image load
-2. Improve Image hover as shown in demo and gap between images
-3. Implement skeleton loader for loading
-4. If search and there is no images to show - create custom page to show
 5. Use error from hook to display error component if something broke in url
 6. Write tests for app
-7. lazy loading not working I guess
-8. look for code splitting
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh

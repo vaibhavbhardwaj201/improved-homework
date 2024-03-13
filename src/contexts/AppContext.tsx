@@ -46,7 +46,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
             setPage(1)
             setPhotos([])
         }
-        if (search && search !== prevSearchRef.current) {
+        if (search && (search !== prevSearchRef.current || search === prevSearchRef.current)) {
             window.scrollTo({ top: 0, behavior: 'smooth' })
             setPage(1)
             setPhotos([])
