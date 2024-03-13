@@ -9,20 +9,11 @@ const HeartIcon = () => {
     const count = favourite.length
 
     const handleClick = () => {
-        if (favourite.length === 0) {
-            setFilled(false)
-        } else {
-            setFilled(!filled)
-        }
+        setFilled(!filled)
     }
 
     const toggleClass = () => {
-        if (favourite.length > 0) {
-            setClassActive(!classActive)
-            // setFilled(true)
-        } else {
-            setClassActive(false)
-        }
+        setClassActive(!classActive)
     }
 
     return (

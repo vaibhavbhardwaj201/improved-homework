@@ -10,6 +10,17 @@
   padding-top: 80px;
   overflow-y: scroll;
   transition: right 0.4s ease;
+
+  .overlay-bar__title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .card {
+    margin: 1rem;
+  }
 }
 
 .overlay-bar.is-active {
