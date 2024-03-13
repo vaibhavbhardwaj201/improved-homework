@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react'
 
-import { useFetchImagesResponseType } from '../utils/types'
+import {
+  useFetchImagesParamsType,
+  useFetchImagesResponseType,
+} from '../utils/types'
 
 const API_KEY = import.meta.env.VITE_APP_PEXELS_API_KEY
 const BASE_URL = import.meta.env.VITE_APP_BASE_URL
 
-const useFetchImages = (query: string, page: number) => {
+const useFetchImages = ({ query, page }: useFetchImagesParamsType) => {
   const [data, setData] = useState<useFetchImagesResponseType | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [error, setError] = useState<boolean | null>(false)

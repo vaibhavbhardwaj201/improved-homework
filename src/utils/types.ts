@@ -14,12 +14,6 @@ export type Photos = {
   alt: string
 }
 
-export type favPhoto = {
-  title: string
-  author: string
-  id: number
-}
-
 export type useGlobalContextType = {
   photos: Photos[]
   setPhotos: (value: Photos[]) => void
@@ -44,17 +38,14 @@ export type useFetchImagesResponseType = {
   next_page: string
 }
 
-export type useFetchImagesErrorType = {
-  error: string
-}
-
 export type useFetchImagesParamsType = {
   query: string
   page: number
 }
 
 export type useFetchImagesReturnType = {
-  data: useFetchImagesResponseType
-  error: useFetchImagesErrorType
+  data: useFetchImagesResponseType | null
+  error: boolean | null
   isLoading: boolean
+  hasMore: boolean
 }

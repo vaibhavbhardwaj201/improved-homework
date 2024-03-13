@@ -42,7 +42,7 @@ const ImageCard = () => {
                         </div>
                     } else {
                         return <div
-                            key={photo.id}
+                            key={photo.src.original}
                         >
                             <Image
                                 title={photo.alt}

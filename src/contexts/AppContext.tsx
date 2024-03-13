@@ -1,6 +1,17 @@
-import { ReactNode, createContext, useContext, useEffect, useState, useRef } from "react"
+import {
+    ReactNode,
+    createContext,
+    useContext,
+    useEffect,
+    useState,
+    useRef
+} from "react"
 
-import { Photos, useGlobalContextType } from "../utils/types"
+import {
+    Photos,
+    useFetchImagesReturnType,
+    useGlobalContextType
+} from "../utils/types"
 import useFetchImages from "../hooks/useFetchImages"
 
 
@@ -15,15 +26,14 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
     const [search, setSearch] = useState<string>('')
     const [classActive, setClassActive] = useState<boolean>(false)
     const [hasMoreData, setHasMoreData] = useState<boolean>(false)
-    const prevSearchRef = useRef<string>('')
 
+    const prevSearchRef = useRef<string>('')
 
     const {
         data,
-        // error,
         hasMore,
         isLoading
-    } = useFetchImages(search, page)
+    }: useFetchImagesReturnType = useFetchImages({ query: search, page })
 
     useEffect(() => {
         setLoading(isLoading)
@@ -31,7 +41,11 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
     }, [hasMore, isLoading])
 
     useEffect(() => {
-        if (search && search !== prevSearchRef.current) {
+        if (search === '') {
+            setPage(1)
+            setPhotos([])
+        }
+        if (search && search !== '') {
             setPage(1)
             setPhotos([])
             prevSearchRef.current = search
@@ -39,14 +53,13 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
     }, [search])
 
     useEffect(() => {
-
         if (data) {
-            setPhotos((prev) => {
-                return [...prev, ...data.photos]
-            })
+            const imgExists = data.photos.some(newImg => photos.some(img => img.src.original === newImg.src.original))
+            if (!imgExists) {
+                setPhotos(prev => [...prev, ...data.photos])
+            }
         }
     }, [data])
-
 
     return (
         <AppContext.Provider

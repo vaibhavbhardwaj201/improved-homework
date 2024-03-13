@@ -8,6 +8,7 @@ TODO:
 1. Add place holder till image load
 2. Improve Image hover as shown in demo
 3. Implement skeleton loader for loading
+4. On scrolling a lot - getting error of 'two children with same key'
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh

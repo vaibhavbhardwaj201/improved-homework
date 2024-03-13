@@ -33,7 +33,6 @@ const Image = ({
     }, [setFavourite])
 
     useEffect(() => {
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting && !loaded) {
