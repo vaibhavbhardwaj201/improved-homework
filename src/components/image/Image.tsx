@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from 'react'
 import { useAppContext } from '../../contexts/AppContext'
 import './Image.scss'
 import { Photos } from '../../utils/types'
+import { ImagePlaceholder } from '..'
 
 
 interface ImageProps {
@@ -17,7 +18,8 @@ const Image = ({
     url
 }: ImageProps) => {
     const imgRef = useRef<HTMLImageElement>(null)
-    const [loaded, setLoaded] = useState(false)
+    const [loaded, setLoaded] = useState<boolean>(false)
+    const [showPlaceholder, setShowPlaceholder] = useState<boolean>(true)
 
     const { favourite, setFavourite } = useAppContext()
 
@@ -38,7 +40,7 @@ const Image = ({
                 if (entry.isIntersecting && !loaded) {
                     imgRef.current!.src = url.src.medium
                     setLoaded(true)
-
+                    setShowPlaceholder(false)
                     observer.unobserve(imgRef.current!)
                 }
             })
@@ -70,23 +72,25 @@ const Image = ({
                 <div className="image-overlay">
                     <div className="overlay-text">
                         <div className="title-text">
-                            {title}
+                            {title.split(' ').slice(0, 3).join(' ')}
                         </div>
                         <div className="line-sep"></div>
                         <div className="extra-text">{author}</div>
-                        {inFav ?
-                            <button className="image-button" onClick={() => removeFromFavourite(url.id)} >Remove</button> :
-                            <button className="image-button" onClick={() => addToFavourite(url)} >Favourite</button>
-                        }
                     </div>
+                    {inFav ?
+                        <button className="image-button" onClick={() => removeFromFavourite(url.id)} >Remove</button> :
+                        <button className="image-button" onClick={() => addToFavourite(url)} >Favourite</button>
+                    }
                 </div>
+                {showPlaceholder && <ImagePlaceholder />}
                 <img
                     ref={imgRef}
-                    className='images'
+                    className={`images ${showPlaceholder ? 'hidden' : ''}`}
                     src={url.src.tiny}
                     alt="img"
                     loading='lazy'
                     srcSet={srcset}
+                    onLoad={() => setShowPlaceholder(false)}
                 />
             </div>
         </>

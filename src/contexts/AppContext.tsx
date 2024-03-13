@@ -42,10 +42,12 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
 
     useEffect(() => {
         if (search === '') {
+            window.scrollTo({ top: 0, behavior: 'smooth' })
             setPage(1)
             setPhotos([])
         }
         if (search && search !== prevSearchRef.current) {
+            window.scrollTo({ top: 0, behavior: 'smooth' })
             setPage(1)
             setPhotos([])
             prevSearchRef.current = search

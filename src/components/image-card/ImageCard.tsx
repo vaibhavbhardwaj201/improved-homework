@@ -15,8 +15,6 @@ const ImageCard = () => {
         if (observer.current) observer.current.disconnect()
         observer.current = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting && hasMoreData) {
-                // Infinite scroll is working but check this setPage( type error )
-                // setPage((prev) => (prev as number) + 1)
                 setPage(page + 1)
             }
         })

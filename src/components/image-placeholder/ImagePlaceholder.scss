@@ -1,0 +1,26 @@
+.image-placeholder {
+  width: 100%;
+  padding-top: 68.75%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.skeleton {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #a59999;
+  animation: loading 1s infinite alternate;
+}
+
+@keyframes loading {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}

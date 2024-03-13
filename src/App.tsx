@@ -1,6 +1,5 @@
-// import { useEffect } from 'react'
 import './App.scss'
-import { ImageCard, Loader, Navbar, NoImages, Overlay, SearchBar } from './components'
+import { Loader, Navbar, NoImages, Overlay, SearchBar, ImageCard } from './components'
 import { useAppContext } from './contexts/AppContext'
 
 function App() {
@@ -15,7 +14,10 @@ function App() {
         <SearchBar />
       </div>
       {loading && <Loader />}
-      {photos.length > 0 ? <ImageCard /> : <NoImages />}
+      {photos.length > 0 ?
+        <ImageCard />
+        :
+        <NoImages />}
     </>
   )
 }

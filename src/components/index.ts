@@ -6,6 +6,7 @@ import ImageCard from './image-card/ImageCard'
 import Image from './image/Image'
 import Overlay from './overlay/Overlay'
 import NoImages from './no-images/NoImages'
+import ImagePlaceholder from './image-placeholder/ImagePlaceholder'
 
 export {
   Navbar,
@@ -16,4 +17,5 @@ export {
   Image,
   Overlay,
   NoImages,
+  ImagePlaceholder,
 }
