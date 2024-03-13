@@ -30,7 +30,7 @@ const Image = ({
     ${url?.src?.small} 130w, 
     ${url?.src?.landscape} 1200w, 
     ${url?.src?.tiny} 280w
-    `
+`
 
     useEffect(() => {
         const storedData = localStorage.getItem('favourite')
@@ -76,6 +76,7 @@ const Image = ({
                     alt="img"
                     loading='lazy'
                     srcSet={srcset}
+                    sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 33vw"
                     onLoad={() => setShowPlaceholder(false)}
                 />
             </div>
