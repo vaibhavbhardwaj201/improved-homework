@@ -62,7 +62,6 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
         }
     }, [data])
 
-    console.log(photos)
     return (
         <AppContext.Provider
             value={{

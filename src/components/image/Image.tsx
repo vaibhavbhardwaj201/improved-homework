@@ -83,7 +83,7 @@ const Image = ({
                 <img
                     ref={imgRef}
                     className='images'
-                    src={url.src.original}
+                    src={url.src.tiny}
                     alt="img"
                     loading='lazy'
                     srcSet={srcset}
