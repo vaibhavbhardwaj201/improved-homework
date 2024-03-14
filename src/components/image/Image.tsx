@@ -23,22 +23,14 @@ const Image = ({
 
     const inFav = favourite.some((photo) => photo.id === url?.id)
 
-    //     const srcset = `
-    //     ${url?.src?.original} 20480w, 
-    //     ${url?.src?.large} 1200w, 
-    //     ${url?.src?.medium} 940w, 
-    //     ${url?.src?.small} 500w, 
-    //     ${url?.src?.landscape} 1200w, 
-    //     ${url?.src?.tiny} 280w
-    // `
-    // ${ url?.src?.landscape } 940w,
     const srcset = `
-    ${url?.src?.original} 1200w, 
+    ${url?.src?.original} 1600w, 
+    ${url?.src?.landscape} 1200w,
     ${url?.src?.large2x} 940w, 
     ${url?.src?.large} 500w, 
     ${url?.src?.medium} 340w, 
-    ${url?.src?.small} 280w, 
-    ${url?.src?.tiny} 180w
+    ${url?.src?.tiny} 280w
+    ${url?.src?.small} 180w, 
 `
 
     useEffect(() => {
@@ -85,7 +77,7 @@ const Image = ({
                     alt="img"
                     loading='lazy'
                     srcSet={srcset}
-                    sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 33vw"
+                    sizes='(max-width: 650px) calc((100vw - 45px) / 2), (max-width: 900px) calc((100vw - 45px) / 2), (max-width: 1440px) calc((100vw - 100px) / 3), (max-width: 1600px) calc((100vw - 200px) / 3), calc((1600px - 200px) / 3)'
                     onLoad={() => setShowPlaceholder(false)}
                 />
             </div>
