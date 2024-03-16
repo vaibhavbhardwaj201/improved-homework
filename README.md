@@ -38,11 +38,17 @@ npm run dev
 
 ```js
 const response = await fetch(BASE_URL + `${query}&page=${page}`, {
-  method: 'GET',
+  method: "GET",
   headers: {
     Authorization: API_KEY,
   },
 })
+```
+
+## Run Test
+
+```bash
+npm run test
 ```
 
 ## Author

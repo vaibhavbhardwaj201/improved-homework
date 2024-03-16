@@ -1,5 +1,6 @@
 import { cleanup, render } from '@testing-library/react'
 import { afterEach } from 'vitest'
+import { AppProvider } from '../contexts/AppContext'
 
 afterEach(() => {
     cleanup()
@@ -8,7 +9,7 @@ afterEach(() => {
 function customRender(ui: React.ReactElement, options = {}) {
     return render(ui, {
         // wrap provider(s) here if needed
-        wrapper: ({ children }) => children,
+        wrapper: AppProvider,
         ...options,
     })
 }

@@ -1,7 +1,5 @@
 export type Photos = {
   id: number
-  width: number
-  height: number
   photographer: string
   src: {
     original: string

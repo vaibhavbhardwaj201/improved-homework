@@ -12,7 +12,7 @@ import {
     useFetchImagesReturnType,
     useGlobalContextType
 } from "../utils/types"
-import useFetchImages from "../hooks/useFetchImages"
+import useFetchImages from "../hooks/use-fetch-images/useFetchImages"
 
 
 const AppContext = createContext<useGlobalContextType | null>(null)
@@ -60,7 +60,6 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
             if (!imgExists) {
                 setPhotos(prev => [...prev, ...data.photos])
             }
-
         }
     }, [data])
 

@@ -15,45 +15,39 @@ const ImageCard = () => {
         if (observer.current) observer.current.disconnect()
         observer.current = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting && hasMoreData) {
-                setPage(page + 1)
+                setTimeout(() => {
+                    setPage(page + 1)
+                }, 500)
             }
         })
         if (node) observer.current.observe(node)
 
     }, [loading, setPage, hasMoreData, page])
 
-
     return (
         <>
             <div className='cards-container'>
                 {photos.map((photo, index) => {
                     if (photos.length === index + 1) {
-                        return <div
-                            ref={lastImageElementRef}
+                        return <Image
                             key={photo.src.original}
-                        >
-                            <Image
-                                title={photo.alt}
-                                author={photo.photographer}
-                                url={photo}
-                            />
-                        </div>
+                            title={photo.alt}
+                            author={photo.photographer}
+                            url={photo}
+                        />
                     } else {
-                        return <div
+                        return <Image
                             key={photo.src.original}
-                        >
-                            <Image
-                                title={photo.alt}
-                                author={photo.photographer}
-                                url={photo}
-                            />
-                        </div>
+                            title={photo.alt}
+                            author={photo.photographer}
+                            url={photo}
+                        />
                     }
                 })}
-
             </div>
             <div className="cards-container">
                 {loading && <Loader />}
+                <div ref={lastImageElementRef}></div>
             </div>
         </>
     )

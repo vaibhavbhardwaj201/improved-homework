@@ -6,7 +6,6 @@ const Overlay = () => {
 
     const { classActive, favourite } = useAppContext()
 
-
     return (
         <div className={classActive ? 'overlay-bar is-active' : 'overlay-bar'}>
             {favourite.length === 0 && <h1 className='overlay-bar__title'>Nothing to show!</h1>}

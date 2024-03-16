@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 
-import { useAppContext } from '../../contexts/AppContext'
 import './Image.scss'
+import { useAppContext } from '../../contexts/AppContext'
 import { Photos } from '../../utils/types'
-import { ImagePlaceholder } from '..'
+import { ImagePlaceholder } from '../index'
 
 
 interface ImageProps {
@@ -55,33 +55,31 @@ const Image = ({
     }
 
     return (
-        <>
-            <div className='card'>
-                <div className="image-overlay">
-                    <div className="overlay-text">
-                        <div className="title-text">
-                            {title.split(' ').slice(0, 3).join(' ')}
-                        </div>
-                        <div className="line-sep"></div>
-                        <div className="extra-text">{author}</div>
+        <div className='card'>
+            <div className="image-overlay">
+                <div className="overlay-text">
+                    <div className="title-text">
+                        {title.split(' ').slice(0, 3).join(' ')}
                     </div>
-                    {inFav ?
-                        <button className="image-button" onClick={() => removeFromFavourite(url.id)} >Remove</button> :
-                        <button className="image-button" onClick={() => addToFavourite(url)} >Favourite</button>
-                    }
+                    <div className="line-sep"></div>
+                    <div className="extra-text">{author}</div>
                 </div>
-                {showPlaceholder && <ImagePlaceholder />}
-                <img
-                    className="images"
-                    src={url.src.medium}
-                    alt="img"
-                    loading='lazy'
-                    srcSet={srcset}
-                    sizes='(max-width: 650px) calc((100vw - 45px) / 2), (max-width: 900px) calc((100vw - 45px) / 2), (max-width: 1440px) calc((100vw - 100px) / 3), (max-width: 1600px) calc((100vw - 200px) / 3), calc((1600px - 200px) / 3)'
-                    onLoad={() => setShowPlaceholder(false)}
-                />
+                {inFav ?
+                    <button className="image-button" onClick={() => removeFromFavourite(url.id)} >Remove</button> :
+                    <button className="image-button" onClick={() => addToFavourite(url)} >Favourite</button>
+                }
             </div>
-        </>
+            {showPlaceholder && <ImagePlaceholder />}
+            <img
+                className="images"
+                src={url.src.medium}
+                alt="img"
+                loading='lazy'
+                srcSet={srcset}
+                sizes='(max-width: 650px) calc((100vw - 45px) / 2), (max-width: 900px) calc((100vw - 45px) / 2), (max-width: 1440px) calc((100vw - 100px) / 3), (max-width: 1600px) calc((100vw - 200px) / 3), calc((1600px - 200px) / 3)'
+                onLoad={() => setShowPlaceholder(false)}
+            />
+        </div>
     )
 }
 
