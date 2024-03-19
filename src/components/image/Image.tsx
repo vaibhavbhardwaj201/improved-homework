@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import './Image.scss'
 import { useAppContext } from '../../contexts/AppContext'
@@ -18,20 +18,23 @@ const Image = ({
     url
 }: ImageProps) => {
     const [showPlaceholder, setShowPlaceholder] = useState<boolean>(true)
+    const [imageLoaded, setImageLoaded] = useState<boolean>(false)
 
     const { favourite, setFavourite } = useAppContext()
 
     const inFav = favourite.some((photo) => photo.id === url?.id)
 
-    const srcset = `
-    ${url?.src?.original} 1600w, 
-    ${url?.src?.landscape} 1200w,
-    ${url?.src?.large2x} 940w, 
-    ${url?.src?.large} 500w, 
-    ${url?.src?.medium} 340w, 
-    ${url?.src?.tiny} 280w
+    const srcset = useMemo(() => {
+        return `
+    ${url?.src?.original} 2080w, 
+    ${url?.src?.landscape} 1600w,
+    ${url?.src?.large2x} 1200w, 
+    ${url?.src?.large} 940w, 
+    ${url?.src?.medium} 500w, 
+    ${url?.src?.tiny} 340w
     ${url?.src?.small} 180w, 
 `
+    }, [url.src])
 
     useEffect(() => {
         const storedData = localStorage.getItem('favourite')
@@ -54,6 +57,11 @@ const Image = ({
         }
     }
 
+    const onImageLoad = () => {
+        setShowPlaceholder(false)
+        setImageLoaded(true)
+    }
+
     return (
         <div className='card'>
             <div className="image-overlay">
@@ -71,13 +79,13 @@ const Image = ({
             </div>
             {showPlaceholder && <ImagePlaceholder />}
             <img
-                className="images"
+                className={`images ${imageLoaded ? 'loaded' : ''}`}
                 src={url.src.medium}
                 alt="img"
                 loading='lazy'
                 srcSet={srcset}
-                sizes='(max-width: 650px) calc((100vw - 45px) / 2), (max-width: 900px) calc((100vw - 45px) / 2), (max-width: 1440px) calc((100vw - 100px) / 3), (max-width: 1600px) calc((100vw - 200px) / 3), calc((1600px - 200px) / 3)'
-                onLoad={() => setShowPlaceholder(false)}
+                sizes='(max-width: 600px) 100vw, (max-width: 960px) 50vw, 33vw'
+                onLoad={onImageLoad}
             />
         </div>
     )

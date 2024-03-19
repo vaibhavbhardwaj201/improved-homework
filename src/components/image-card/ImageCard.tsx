@@ -27,27 +27,19 @@ const ImageCard = () => {
     return (
         <>
             <div className='cards-container'>
-                {photos.map((photo, index) => {
-                    if (photos.length === index + 1) {
-                        return <Image
-                            key={photo.src.original}
-                            title={photo.alt}
-                            author={photo.photographer}
-                            url={photo}
-                        />
-                    } else {
-                        return <Image
-                            key={photo.src.original}
-                            title={photo.alt}
-                            author={photo.photographer}
-                            url={photo}
-                        />
-                    }
+                {photos.map((photo) => {
+                    return <Image
+                        key={photo.src.original}
+                        title={photo.alt}
+                        author={photo.photographer}
+                        url={photo}
+                    />
                 })}
             </div>
             <div className="cards-container">
-                {loading && <Loader />}
-                <div ref={lastImageElementRef}></div>
+                <div ref={lastImageElementRef}>
+                    {loading && <Loader />}
+                </div>
             </div>
         </>
     )
