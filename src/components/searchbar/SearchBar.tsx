@@ -3,7 +3,7 @@ import { useAppContext } from '../../contexts/AppContext'
 import './SearchBar.scss'
 
 const SearchBar = () => {
-    const { setSearch, setPhotos, photos } = useAppContext()
+    const { setSearch, setPhotos, photos, setPage } = useAppContext()
     const [searchValue, setSearchValue] = useState<string>('')
 
     useEffect(() => {
@@ -17,6 +17,7 @@ const SearchBar = () => {
 
     const handleSetSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchValue(e.target.value)
+        setPage(1)
     }
 
     return (

@@ -33,9 +33,9 @@ const useFetchImages = ({ query, page }: useFetchImagesParamsType) => {
         if (!response.ok) {
           throw new Error("Network response was not ok")
         }
-        const data = await response.json()
+        const data: useFetchImagesResponseType = await response.json()
         setData(data)
-        setHasMore(data.total_results > 0)
+        setHasMore(data.photos.length > 0)
         setIsLoading(false)
       } catch (e) {
         setError(true)

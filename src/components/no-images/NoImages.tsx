@@ -1,5 +1,3 @@
-
-
 const NoImages = () => {
     return (
         <div style={{ textAlign: 'center', fontSize: '1.2rem', padding: '20px', color: '#555' }}>

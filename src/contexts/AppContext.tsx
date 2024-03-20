@@ -3,8 +3,7 @@ import {
     createContext,
     useContext,
     useEffect,
-    useState,
-    useRef
+    useState
 } from "react"
 
 import {
@@ -27,8 +26,6 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
     const [classActive, setClassActive] = useState<boolean>(false)
     const [hasMoreData, setHasMoreData] = useState<boolean>(false)
 
-    const prevSearchRef = useRef<string>('')
-
     const {
         data,
         hasMore,
@@ -46,11 +43,10 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
             setPage(1)
             setPhotos([])
         }
-        if (search && (search !== prevSearchRef.current || search === prevSearchRef.current)) {
+        if (search) {
             window.scrollTo({ top: 0, behavior: 'smooth' })
             setPage(1)
             setPhotos([])
-            prevSearchRef.current = search
         }
     }, [search])
 

@@ -27,11 +27,11 @@ const Image = ({
     const srcset = useMemo(() => {
         return `
     ${url?.src?.original} 2080w, 
-    ${url?.src?.landscape} 1600w,
-    ${url?.src?.large2x} 1200w, 
-    ${url?.src?.large} 940w, 
-    ${url?.src?.medium} 500w, 
-    ${url?.src?.tiny} 340w
+    ${url?.src?.landscape} 1200w,
+    ${url?.src?.large2x} 940w, 
+    ${url?.src?.large} 500w, 
+    ${url?.src?.medium} 340w, 
+    ${url?.src?.tiny} 280w
     ${url?.src?.small} 180w, 
 `
     }, [url.src])
